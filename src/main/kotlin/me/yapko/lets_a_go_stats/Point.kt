@@ -1,3 +1,5 @@
+package me.yapko.lets_a_go_stats
+
 import org.joda.time.DateTime
 import org.joda.time.Duration
 import kotlin.math.*
@@ -26,6 +28,10 @@ data class Point(
      */
     infix fun distance(other: Point): Double {
         return distance(latitude, other.latitude, longitude, other.longitude)
+    }
+
+    infix fun same(other: Point): Boolean {
+        return latitude == other.latitude && longitude == other.longitude && altitude == other.altitude
     }
 }
 

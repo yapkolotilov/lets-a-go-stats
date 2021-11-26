@@ -1,3 +1,3 @@
 
-rootProject.name = "lets-a-go-stats"
+rootProject.name = "lets_a_go_stats"
 

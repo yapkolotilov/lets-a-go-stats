@@ -5,8 +5,12 @@ plugins {
     id("maven-publish")
 }
 
-group = "me.yapko"
-version = "1.0"
+val groupName = "me.yapko"
+val artifactName = "lets_a_go_stats"
+val versionName = "1.1"
+
+group = groupName
+version = versionName
 
 repositories {
     mavenCentral()
@@ -24,22 +28,18 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            /** Configure path of your package repository on Github
-             *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
-             */
-            url = uri("https://maven.pkg.github.com/yapkolotilov/lets-a-go-stats") // Github Package
+            url = uri("https://maven.pkg.github.com/yapkolotilov/lets-a-go-stats")
             credentials {
-                //Fetch these details from the properties file or from Environment variables
-                username = "yapkolotilov"
-                password = "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"
+                username = System.getenv("GITHUB_USERNAME").orEmpty()
+                password = System.getenv("GITHUB_TOKEN").orEmpty()
             }
         }
     }
     publications {
         create<MavenPublication>("maven") {
-            groupId = "me.yapko"
-            artifactId = "lets-a-go-stats"
-            version = "1.0"
+            groupId = groupName
+            artifactId = artifactName
+            version = versionName
 
             from(components["java"])
         }
